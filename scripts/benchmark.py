@@ -6,8 +6,14 @@ import pstats
 import cProfile
 from contextlib import contextmanager
 
+from pathlib import Path
+import sys
+
+# Allow running this development script directly from any directory.
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
 from panda import Panda, PandaDFU
-from panda.tests.hitl.helpers import get_random_can_messages
+from tests.hitl.helpers import get_random_can_messages
 
 
 PROFILE = "PROFILE" in os.environ

@@ -3,11 +3,8 @@ import os
 import struct
 from functools import wraps
 
-from panda import Panda, PandaDFU
-from panda.python.constants import McuType, compute_version_hash
-
-BASEDIR = os.path.dirname(os.path.realpath(__file__))
-FW_PATH = os.path.join(BASEDIR, "../obj/")
+from .panda import Panda, PandaDFU
+from .constants import BASEDIR, FW_PATH, McuType, compute_version_hash
 
 
 def ensure_jungle_health_packet_version(fn):
@@ -39,7 +36,7 @@ class PandaJungle(Panda):
   H7_DEVICES = [HW_TYPE_V2, ]
   SUPPORTED_DEVICES = H7_DEVICES
 
-  HEALTH_PACKET_VERSION = compute_version_hash(os.path.join(BASEDIR, "jungle_health.h"))
+  HEALTH_PACKET_VERSION = compute_version_hash(os.path.join(BASEDIR, "board/jungle/jungle_health.h"))
   HEALTH_STRUCT = struct.Struct("<IffffffHHHHHHHHHHHH")
 
   HARNESS_ORIENTATION_NONE = 0

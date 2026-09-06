@@ -7,12 +7,11 @@ ENV PATH="$WORKDIR/.venv/bin:$PATH"
 WORKDIR $WORKDIR
 
 # deps install
-COPY pyproject.toml __init__.py setup.sh $WORKDIR
-RUN mkdir -p $WORKDIR/python/ $WORKDIR/board/body/ $WORKDIR/board/jungle/ && \
-    touch $WORKDIR/__init__.py $WORKDIR/board/__init__.py $WORKDIR/board/body/__init__.py $WORKDIR/board/jungle/__init__.py
+COPY pyproject.toml setup.py packaging_backend.py setup.sh $WORKDIR
+RUN mkdir -p $WORKDIR/panda/ && touch $WORKDIR/panda/__init__.py
 RUN apt-get update && apt-get install -y --no-install-recommends sudo && DEBIAN_FRONTEND=noninteractive $WORKDIR/setup.sh
 
-# second pass for the opendbc moving tag
+# refresh development tool dependencies
 ARG CACHEBUST=1
 RUN DEBIAN_FRONTEND=noninteractive $WORKDIR/setup.sh
 

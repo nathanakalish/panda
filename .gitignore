@@ -15,7 +15,7 @@ dist/
 build/
 pandacan.egg-info/
 obj/
-examples/output.csv
+output.csv
 .DS_Store
 .vscode*
 nosetests.xml
@@ -40,3 +40,5 @@ mull.yml
 
 .claude/
 TASK.md
+
+.build-logs/

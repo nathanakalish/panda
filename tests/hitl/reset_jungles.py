@@ -1,8 +1,14 @@
 #!/usr/bin/env python3
 import concurrent.futures
 
+from pathlib import Path
+import sys
+
+# Allow running this development script directly from any directory.
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+
 from panda import PandaJungle, PandaJungleDFU, McuType
-from panda.tests.libs.resetter import Resetter
+from tests.libs.resetter import Resetter
 
 SERIALS = {
   '180019001451313236343430',  # jungle v2

@@ -3,7 +3,9 @@ import enum
 import hashlib
 from typing import NamedTuple
 
-BASEDIR = os.path.join(os.path.dirname(os.path.realpath(__file__)), "../")
+# Source checkouts use board/; installed packages carry their own board resources.
+PACKAGE_DIR = os.path.dirname(os.path.realpath(__file__))
+BASEDIR = PACKAGE_DIR if os.path.isdir(os.path.join(PACKAGE_DIR, "board")) else os.path.dirname(PACKAGE_DIR)
 FW_PATH = os.path.join(BASEDIR, "board/obj/")
 
 def compute_version_hash(filepath):

@@ -1,7 +1,7 @@
 # python helpers for the body panda
 import struct
 
-from panda import Panda
+from .panda import Panda
 
 class PandaBody(Panda):
 

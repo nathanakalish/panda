@@ -11,7 +11,7 @@ I found a drive where I knew I was not pressing the brake between timestamp 50.0
 Now download the log from cabana (Save Log button) and run the script passing in the timestamps
 (replace csv file name with cabana log you downloaded and time ranges with your own)
 ```
-./can_bit_transition.py ./honda_crv_ex_2017_can-1520354796875.csv 50.0-65.0 69.0-79.0
+python -m panda.examples.can_bit_transition ./honda_crv_ex_2017_can-1520354796875.csv 50.0-65.0 69.0-79.0
 ```
 
 The script will output bits that were always low in the first time range and always high in the second time range (and vice versa)

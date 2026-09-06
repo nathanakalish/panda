@@ -3,7 +3,6 @@ import time
 import struct
 from opendbc.car.structs import CarParams
 from panda import Panda
-from hexdump import hexdump
 from opendbc.car.isotp import isotp_send, isotp_recv
 
 # 0x7e0 = Toyota
@@ -37,7 +36,7 @@ if __name__ == "__main__":
   # 09 02 = Get VIN
   isotp_send(panda, b"\x09\x02", 0x7df)
   ret = isotp_recv(panda, 0x7e8)
-  hexdump(ret)
+  print(ret.hex(" "))
   print("VIN: %s" % "".join(map(chr, ret[:2])))
 
   # 03 = get DTCS

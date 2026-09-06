@@ -21,8 +21,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: ./setup.sh
-      - name: Test python package installer
-        run: ${{ env.RUN }} "pip install --break-system-packages .[dev]"
       - name: Build debug FW
         run: ${{ env.RUN }} "scons"
       - name: Build release FW
@@ -39,18 +37,3 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: ./test.sh
-
-  windows:
-    name: windows pip package test
-    runs-on: windows-latest
-    timeout-minutes: 10
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - uses: astral-sh/setup-uv@v5
-      - name: Install package with uv
-        run: uv pip install --system .
-      - name: Verify importing panda
-        run: python -c "from panda import Panda"

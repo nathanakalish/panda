@@ -1,0 +1,5 @@
+include README.md LICENSE setup.py packaging_backend.py
+include board/health.h board/jungle/jungle_health.h
+include board/obj/*.bin board/obj/*.bin.signed
+recursive-include panda *.py *.md
+global-exclude *.pyc
